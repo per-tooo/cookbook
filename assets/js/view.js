@@ -36,6 +36,7 @@ function md2html(md) {
   md = md.replace(/^(\-\-\-)/gim, '<hr class="" />');
   md = md.replace(/^(\+\+\+)/gim, '<hr class="" />');
 
+  // not secure; no link sanitization or validation in place
   md = md.replace(/\[(.+?)\]\((.+?)\)/gim, '<a href="$2">$1</a>');
 
   return md;
