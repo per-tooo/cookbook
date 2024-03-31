@@ -1,0 +1,137 @@
+<!-- https://uicolors.app/create -->
+<!-- #d97706 amber 600 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chefkoch</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="../assets/js/app.js" defer></script>
+    <script src="../assets/js/recipe_editor.js" defer></script>
+
+    <script src="../assets/libraries/editor/editor.js"></script>
+    <link rel="stylesheet" href="../assets/libraries/editor/editor.css" />
+  </head>
+  <body class="font-serif tracking-wide">
+    <!-- Header and edit button -->
+    <!-- bg-amber-600 -->
+    <header
+      class="sticky top-0 w-full bg-white px-4 py-3 pt-8 flex flex-row items-center gap-3 z-10"
+      app-link="index.html"
+    >
+      <div class="bg-gray-950 p-2 rounded-lg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 text-white"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.871c1.355 0 2.697.056 4.024.166C17.155 8.51 18 9.473 18 10.608v2.513M15 8.25v-1.5m-6 1.5v-1.5m12 9.75-1.5.75a3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0L3 16.5m15-3.379a48.474 48.474 0 0 0-6-.371c-2.032 0-4.034.126-6 .371m12 0c.39.049.777.102 1.163.16 1.07.16 1.837 1.094 1.837 2.175v5.169c0 .621-.504 1.125-1.125 1.125H4.125A1.125 1.125 0 0 1 3 20.625v-5.17c0-1.08.768-2.014 1.837-2.174A47.78 47.78 0 0 1 6 13.12M12.265 3.11a.375.375 0 1 1-.53 0L12 2.845l.265.265Zm-3 0a.375.375 0 1 1-.53 0L9 2.845l.265.265Zm6 0a.375.375 0 1 1-.53 0L15 2.845l.265.265Z"
+          />
+        </svg>
+      </div>
+      <span class="text-3xl tracking-wide text-black">Chefkoch</span>
+    </header>
+    <!-- /Header and edit button -->
+
+    <!-- editor -->
+    <section class="px-4 mt-4 mb-10">
+      <div class="mb-5">
+        <label for="title" class="block mb-2 text-sm font-medium text-gray-900">
+          Wie soll dein Rezept heißen?
+        </label>
+        <input
+          type="text"
+          id="title"
+          app-data="recipe-title"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="Titel"
+        />
+      </div>
+      <div class="mb-5">
+        <label for="tags" class="block mb-2 text-sm font-medium text-gray-900">
+          Was macht dein Rezept aus?
+        </label>
+        <input
+          type="text"
+          id="tags"
+          app-data="recipe-tags"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="Tags durch ; trennen"
+        />
+      </div>
+      <div class="mb-5">
+        <label for="img" class="block mb-2 text-sm font-medium text-gray-900">
+          Hast du schon ein Bild geknipst?
+        </label>
+        <input
+          type="file"
+          id="img"
+          app-data="recipe-img"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="Titel"
+        />
+      </div>
+      <div class="mb-5">
+        <textarea></textarea>
+      </div>
+      <div class="mb-5">
+        <button
+          class="p-2 tracking-normal rounded-lg transition-colors bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white"
+          app-action="submit"
+        >
+          Speichern
+        </button>
+      </div>
+    </section>
+
+    <script>
+      const editor = new EasyMDE({
+        autofocus: false,
+        autosave: {
+          enabled: true,
+          uniqueId: "recipe_autosave",
+          delay: 10000,
+          submit_delay: 5000,
+          text: "Rezept automatisch lokal gespeichert: ",
+          timeFormat: {
+            locale: "de-DE",
+            format: {
+              year: "2-digit",
+              month: "2-digit",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+            },
+          },
+        },
+        scrollbarStyle: "null",
+        toolbar: [
+          "heading-1",
+          "heading-2",
+          "heading-3",
+          "|",
+          "bold",
+          "italic",
+          "horizontal-rule",
+          "|",
+          "link",
+          "unordered-list",
+          "ordered-list",
+        ],
+        lineNumbers: false,
+        placeholder: "Verrate mir dein Geheimnis",
+        spellChecker: false,
+        status: ["autosave"],
+      });
+    </script>
+  </body>
+</html>
