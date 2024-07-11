@@ -2,7 +2,7 @@
   $database_info = [
     "host" => "toooserv",
     "user" => "root",
-    "password" => "simizd2004",
+    "password" => "",
     "database" => "app",
     "port" => 8085
   ];
